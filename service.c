@@ -76,7 +76,7 @@ void listenThread(){
 void handler(int connfd){
     char flagBuf[4];
     read(connfd, flagBuf, 4);
-    int flag = *((int*)flagBuf);
+    unsigned int flag = *((int*)flagBuf);
 
     //reset playing state to prevent playing when not supposed to
     play = 0;
