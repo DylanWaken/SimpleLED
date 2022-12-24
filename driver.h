@@ -60,7 +60,7 @@ extern ws2811_led_t* mat0;
 
 ws2811_return_t init();
 
-ws2811_return_t initP(int h, int w, int stripType);
+ws2811_return_t initP(int h, int w);
 
 //NCHW 4 * H * W
 void renderMat(uint8_t* arr);

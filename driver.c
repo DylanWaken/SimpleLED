@@ -46,8 +46,41 @@ ws2811_return_t init() {
     return ret;
 }
 
-ws2811_return_t initP(int h, int w, int stripType) {
+ws2811_return_t initP(int h, int w) {
     ws2811_return_t ret;
+    ws2811_t ledstringTmp = {
+            .freq = TARGET_FREQ,
+            .dmanum = DMA,
+            .channel = {
+                    [0] = {
+                            .gpionum = GPIO_PIN,
+                            .invert = 0,
+                            .count = h * w,
+                            .strip_type = STRIP_TYPE,
+                            .brightness = 255,
+                    },
+                    [1] = {
+                            .gpionum = 0,
+                            .invert = 0,
+                            .count = 0,
+                            .brightness = 0,
+                    },
+            },
+    };
+
+    ledStr = ledstringTmp;
+
+    height = h;
+    width = w;
+
+    if ((ret = ws2811_init(&ledStr)) != WS2811_SUCCESS) {
+        fprintf(stderr, "ws2811_init failed");
+        return ret;
+    }
+
+    mat0 = malloc(sizeof(ws2811_led_t) * h * w);
+    memset(mat0, 0, sizeof(ws2811_led_t) * h * w);
+
     return ret;
 }
 
