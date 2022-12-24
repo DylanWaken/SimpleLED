@@ -34,5 +34,5 @@ void initService(int h, int w, int fbSize){
     }
 
     //print start message
-    printf("Server started at port %d",PORT);
+    printf("--- Server started at port %d ---",PORT);
 }
