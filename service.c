@@ -90,6 +90,10 @@ void handler(int connfd){
     }else if(flag == STOP_CODE){
         printf("Stop code received\n");
         play = 0;
+        repeat = 0;
+    }else if(flag == REPEAT_CODE){
+        printf("Repeat code received\n");
+        repeat = 1;
     }else if(flag == SEQ_BEGIN){
         int frameCount;
         read(connfd, &frameCount, 4);

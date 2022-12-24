@@ -20,6 +20,7 @@
 
 #define PLAY_CODE 0xabcdfedc
 #define STOP_CODE 0xabcdfedf
+#define REPEAT_CODE 0xabcdfede
 #define SEQ_BEGIN 0xabcdfed1
 
 #define FPS 50
