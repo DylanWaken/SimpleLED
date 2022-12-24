@@ -5,6 +5,7 @@
 
 int width = WIDTH;
 int height = HEIGHT;
+int dynamicDim = 1;
 
 ws2811_t ledStr;
 ws2811_led_t* mat0;
@@ -74,9 +75,29 @@ void renderMat(uint8_t* arr){
         }
     }
 
+    dynamicDimming(arr, height, width);
+
     ws2811_return_t ret;
     if ((ret = ws2811_render(&ledStr)) != WS2811_SUCCESS){
         fprintf(stderr, "ws2811_render failed: %s\n", ws2811_get_return_t_str(ret));
+    }
+}
+
+void dynamicDimming(const uint8_t* arr, int h, int w){
+    int i, j;
+    int totalBright = 0;
+    for(i = 0; i < h; i++){
+        for(j = 0; j < w; j++){
+            totalBright += arr[0 * (h * w) + (i * w + j)];
+            totalBright += arr[1 * (h * w) + (i * w + j)];
+            totalBright += arr[2 * (h * w) + (i * w + j)];
+        }
+    }
+
+    if(totalBright > MAX_TOTAL_BRIGHT){
+        float scale = (float)MAX_TOTAL_BRIGHT / (float)totalBright;
+        int bright = (int)(255 * scale);
+        ledStr.channel[0].brightness = bright;
     }
 }
 

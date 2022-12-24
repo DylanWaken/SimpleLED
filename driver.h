@@ -47,8 +47,13 @@
 #define HEIGHT                  16
 #define LED_COUNT               (WIDTH * HEIGHT)
 
+//This is the maximum amount of brightness
+//Exceed this count the raspi would crash for insufficient power
+#define MAX_TOTAL_BRIGHT        (5*16*255)
+
 extern int width;
 extern int height;
+extern int dynamicDim;
 
 extern ws2811_t ledStr;
 extern ws2811_led_t* mat0;
@@ -59,6 +64,8 @@ ws2811_return_t initP(int h, int w, int stripType);
 
 //NCHW 4 * H * W
 void renderMat(uint8_t* arr);
+
+void dynamicDimming(const uint8_t* arr, int h, int w);
 
 void clearMat();
 
