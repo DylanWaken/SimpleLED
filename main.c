@@ -1,9 +1,7 @@
-#include <iostream>
-
 #include "driver.h"
 
 int main() {
-    auto* arr = (uint8_t*)malloc(4 * 16 * 16 * sizeof(uint8_t));
+    uint8_t* arr = malloc(4 * 16 * 16 * sizeof(uint8_t));
     for(int i = 0; i < 16 * 16; i++){
         arr[i] = i;
         arr[i + 16 * 16] = i;

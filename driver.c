@@ -3,6 +3,11 @@
 //
 #include "driver.h"
 
+int width = WIDTH;
+int height = HEIGHT;
+
+ws2811_t ledStr;
+ws2811_led_t* mat0;
 
 ws2811_return_t init() {
 

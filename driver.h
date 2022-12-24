@@ -47,14 +47,11 @@
 #define HEIGHT                  16
 #define LED_COUNT               (WIDTH * HEIGHT)
 
-int width = WIDTH;
-int height = HEIGHT;
-int led_count = LED_COUNT;
+extern int width;
+extern int height;
 
-int clear_on_exit = 0;
-
-ws2811_t ledStr;
-ws2811_led_t* mat0;
+extern ws2811_t ledStr;
+extern ws2811_led_t* mat0;
 
 ws2811_return_t init();
 
