@@ -16,6 +16,8 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#define PORT 4090
+
 extern uint8_t * contentBuf;
 extern int bufFrames;
 

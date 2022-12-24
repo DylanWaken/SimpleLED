@@ -25,11 +25,14 @@ void initService(int h, int w, int fbSize){
     //assign IP, PORT
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    servaddr.sin_port = htons(4090);
+    servaddr.sin_port = htons(PORT);
 
     //bind the socket with the server address
     if ((bind(sockfd, (const struct sockaddr*) &servaddr, sizeof(servaddr))) != 0) {
         fprintf(stderr," socket bind failed...\n");
         exit(0);
     }
+
+    //print start message
+    printf("Server started at port %d",PORT);
 }
