@@ -31,8 +31,8 @@ extern int bufFrames;
 extern int sockfd;
 extern struct sockaddr_in servaddr;
 
-extern int frames;
-extern int currentFrame;
+extern unsigned int frames;
+extern unsigned int currentFrame;
 extern int play;
 extern int repeat;
 

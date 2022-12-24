@@ -9,8 +9,8 @@ uint8_t * contentBuf;
 int sockfd;
 struct sockaddr_in servaddr;
 
-int frames = 0;
-int currentFrame = 0;
+unsigned int frames = 0;
+unsigned int currentFrame = 0;
 int play = 0;
 int repeat = 0;
 
