@@ -53,17 +53,17 @@ int led_count = LED_COUNT;
 
 int clear_on_exit = 0;
 
-ws2811_t ledstring;
-ws2811_led_t* matrix;
+ws2811_t ledStr;
+ws2811_led_t* mat0;
 
 ws2811_return_t init();
 
 ws2811_return_t initP(int h, int w, int stripType);
 
 //NCHW 4 * H * W
-void matrixRender(uint8_t* arr);
+void renderMat(uint8_t* arr);
 
-void matrixClear();
+void clearMat();
 
 
 

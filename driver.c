@@ -27,15 +27,15 @@ ws2811_return_t init() {
         },
     };
 
-    ledstring = ledstringTmp;
+    ledStr = ledstringTmp;
 
-    if ((ret = ws2811_init(&ledstring)) != WS2811_SUCCESS) {
+    if ((ret = ws2811_init(&ledStr)) != WS2811_SUCCESS) {
         fprintf(stderr, "ws2811_init failed");
         return ret;
     }
 
-    matrix = malloc(sizeof(ws2811_led_t) * LED_COUNT);
-    memset(matrix, 0, sizeof(ws2811_led_t) * LED_COUNT);
+    mat0 = malloc(sizeof(ws2811_led_t) * LED_COUNT);
+    memset(mat0, 0, sizeof(ws2811_led_t) * LED_COUNT);
 
     return ret;
 }
@@ -58,35 +58,35 @@ void castRGBA2mat(uint8_t* arr, ws2811_led_t* mat, int h, int w){
     }
 }
 
-void matrixRender(uint8_t* arr){
-    //cast matrix
-    castRGBA2mat(arr, matrix, height, width);
+void renderMat(uint8_t* arr){
+    //cast mat0
+    castRGBA2mat(arr, mat0, height, width);
 
-    //render the matrix
+    //render the mat0
     for (int x = 0; x < width; x++){
         for (int y = 0; y < height; y++){
-            ledstring.channel[0].leds[(y * width) + x] = matrix[y * width + x];
+            ledStr.channel[0].leds[(y * width) + x] = mat0[y * width + x];
         }
     }
 
     ws2811_return_t ret;
-    if ((ret = ws2811_render(&ledstring)) != WS2811_SUCCESS){
+    if ((ret = ws2811_render(&ledStr)) != WS2811_SUCCESS){
         fprintf(stderr, "ws2811_render failed: %s\n", ws2811_get_return_t_str(ret));
     }
 }
 
-void matrixClear(){
-    memset(matrix, 0, sizeof(ws2811_led_t) * LED_COUNT);
+void clearMat(){
+    memset(mat0, 0, sizeof(ws2811_led_t) * LED_COUNT);
 
-    //render the matrix
+    //render the mat0
     for (int x = 0; x < width; x++){
         for (int y = 0; y < height; y++){
-            ledstring.channel[0].leds[(y * width) + x] = matrix[y * width + x];
+            ledStr.channel[0].leds[(y * width) + x] = mat0[y * width + x];
         }
     }
 
     ws2811_return_t ret;
-    if ((ret = ws2811_render(&ledstring)) != WS2811_SUCCESS){
+    if ((ret = ws2811_render(&ledStr)) != WS2811_SUCCESS){
         fprintf(stderr, "ws2811_render failed: %s\n", ws2811_get_return_t_str(ret));
     }
 }
