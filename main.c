@@ -12,7 +12,7 @@ int main() {
     init();
 
     renderMat(arr);
-    usleep(100000);
+    usleep(10000000);
 
     clearMat();
 
