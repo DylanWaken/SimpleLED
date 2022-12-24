@@ -22,6 +22,8 @@
 #define STOP_CODE 0xabcdfedf
 #define SEQ_BEGIN 0xabcdfed1
 
+#define FPS 50
+
 extern uint8_t * contentBuf;
 extern int bufFrames;
 
@@ -41,6 +43,6 @@ void handler(int connfd);
 
 void listenThread();
 
-void mainLoop();
+_Noreturn void mainLoop();
 
 #endif //LEDCONTROL_SERVICE_H

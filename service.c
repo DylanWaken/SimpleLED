@@ -99,13 +99,14 @@ void handler(int connfd){
     }
 }
 
-void mainLoop(){
+_Noreturn void mainLoop(){
     while(1){
         if(play){
             while(currentFrame < frames){
                 //play the current frame
                 renderMat(contentBuf + currentFrame * height * width * 4);
                 currentFrame++;
+                usleep(1000000 / FPS);
             }
             currentFrame = 0;
         }
@@ -118,6 +119,8 @@ void mainLoop(){
             }else{
                 currentFrame = 0;
             }
+            usleep(1000000 / FPS);
         }
+        usleep(1000);
     }
 }
