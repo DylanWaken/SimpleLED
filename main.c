@@ -13,7 +13,7 @@ int main() {
         init();
 
         renderMat(arr);
-        usleep(10000000);
+        usleep(500000);
         fprintf(stdout, "prime: %d", prime);
     }
 
