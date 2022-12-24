@@ -18,12 +18,29 @@
 
 #define PORT 4090
 
+#define PLAY_CODE 0xabcdfedc
+#define STOP_CODE 0xabcdfedf
+#define SEQ_BEGIN 0xabcdfed1
+
 extern uint8_t * contentBuf;
 extern int bufFrames;
 
 extern int sockfd;
 extern struct sockaddr_in servaddr;
 
+extern int frames;
+extern int currentFrame;
+extern int play;
+extern int repeat;
+
 void initService(int h, int w, int fbSize);
+
+//the main loop of the server listening
+//This server will only accept one client!
+void handler(int connfd);
+
+void listenThread();
+
+void mainLoop();
 
 #endif //LEDCONTROL_SERVICE_H
