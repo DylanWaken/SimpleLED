@@ -10,5 +10,9 @@ int main() {
     }
 
     init();
-    renderMat(arr);
+
+    while (1) {
+        renderMat(arr);
+        usleep(100);
+    }
 }
