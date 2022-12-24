@@ -133,6 +133,6 @@ _Noreturn void mainLoop(){
             }
             usleep(1000000 / FPS);
         }
-        usleep(1000);
+        usleep(100000);
     }
 }

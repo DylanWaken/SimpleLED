@@ -141,6 +141,7 @@ void dynamicDimming(const uint8_t* arr, int h, int w){
             totalBright += arr[0 * (h * w) + (i * w + j)];
             totalBright += arr[1 * (h * w) + (i * w + j)];
             totalBright += arr[2 * (h * w) + (i * w + j)];
+            totalBright += arr[3 * (h * w) + (i * w + j)];
         }
     }
 
