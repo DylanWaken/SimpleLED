@@ -2,7 +2,7 @@
 
 int main() {
     uint8_t* arr = malloc(4 * 16 * 16 * sizeof(uint8_t));
-    for(int i = 0; i < 30; i++){
+    for(int i = 0; i < 80; i++){
         arr[i] = i;
         arr[i + 16 * 16] = i;
         arr[i + 2 * 16 * 16] = i;
@@ -11,8 +11,9 @@ int main() {
 
     init();
 
-    while (1) {
-        renderMat(arr);
-        usleep(100);
-    }
+    renderMat(arr);
+    usleep(1000);
+
+    clearMat();
+
 }
