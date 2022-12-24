@@ -98,7 +98,15 @@ void handler(int connfd){
         int frameCount;
         read(connfd, &frameCount, 4);
         printf("Sequence begin code received, frame count: %d\n", frameCount);
-        read(frameCount * height * width * 4, contentBuf, connfd);
+
+        //receivce the frames in blocks of 16*16 bytes
+        int bytesReceived = 0;
+        int bytesToReceive = frameCount * 4 * height*width;
+        int packetSize = height*width;
+        while(bytesReceived < bytesToReceive){
+            int bytes = recv(connfd, contentBuf + bytesReceived, packetSize, 0);
+            bytesReceived += bytes;
+        }
         frames = frameCount;
     }
 }
