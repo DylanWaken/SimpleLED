@@ -19,6 +19,7 @@ void initService(int h, int w, int fbSize){
     //construct the led driver
     contentBuf = malloc(fbSize * 4 * h * w * sizeof(uint8_t));
     initP(h, w);
+    clearMat();
 
     //create server socket
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
