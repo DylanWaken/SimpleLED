@@ -64,6 +64,22 @@ void castRGBA2mat(uint8_t* arr, ws2811_led_t* mat, int h, int w){
     }
 }
 
+//Since the RGB arrangement is in a snake shape instead of a matrix
+//We need to convert the matrix to allow proper rendering
+void rearrangeArray(ws2811_led_t* mat, int h, int w){
+    //inverse all odd rows to revert snake shaped index
+    int i, j;
+    for(i = 0; i < h; i++){
+        if(i % 2 > 0){
+            for(j = 0; j < w / 2; j++){
+                ws2811_led_t tmp = mat[i * w + j];
+                mat[i * w + j] = mat[i * w + w - 1 - j];
+                mat[i * w + w - 1 - j] = tmp;
+            }
+        }
+    }
+}
+
 void renderMat(uint8_t* arr){
     //cast mat0
     castRGBA2mat(arr, mat0, height, width);
