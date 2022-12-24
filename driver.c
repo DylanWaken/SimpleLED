@@ -92,6 +92,7 @@ void renderMat(uint8_t* arr){
     }
 
     dynamicDimming(arr, height, width);
+    rearrangeArray(ledStr.channel[0].leds, height, width);
 
     ws2811_return_t ret;
     if ((ret = ws2811_render(&ledStr)) != WS2811_SUCCESS){
